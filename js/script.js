@@ -48,21 +48,24 @@ var reposPromise = $.getJSON(rootUrl + reposUrl + genParamString(params))
 
 var leftCol = document.querySelector('#left-col')
 
+
 var userDataHandler = function (apiResponseData) {
-    console.log('yeah, this works')
+
     // console.log(apiResponseData)
-    var userDataArray = apiResponseData
+    var userDataObject = apiResponseData
     // console.log(userDataArray)
-    var userDataString =''
-    for(var i = 0; i < userDataArray.length; i++) {
-        var userPic = userDataArray[i].avatar_url,
-            name = userDataArray[i].name,
-            username = userDataArray[i].login,
-            bio = userDataArray[i].bio,
-            joinDate = userDataArray[i].created_at,
-            followers = userDataArray[i].followers,
-            following =userDataArray[i].following
-        userDataString += '<div id = "picture"><img src=' + '"' + userPic + '"></div>'
+    var userDataString = ''
+    // console.log(userDataObject)
+        var userPic = userDataObject.avatar_url,
+        // console.log(userPic)
+            name = userDataObject.name,
+            username = userDataObject.login,
+            bio = userDataObject.bio,
+            joinDate = userDataObject.created_at,
+            followers = userDataObject.followers,
+            following =userDataObject.following
+
+        userDataString += '<img src=' + '"' + userPic + '">'
         userDataString += '<div id = "name"><h4>' + name + '</h4></div>'
         userDataString += '<div id = "username"><p>' + username + '</p></div>'
         userDataString += '<div id = "bio"><p>' + bio + '</p></div>'
@@ -72,11 +75,42 @@ var userDataHandler = function (apiResponseData) {
         userDataString += '<div class ="bottom" id = "followers">' + followers + '</div>'
         userDataString += '<div class = "bottom" id = "following">' + following + '</div>'
 
-    }
+
     leftCol.innerHTML = userDataString
 }
 
 userPromise.then(userDataHandler)
+
+
+//SETTING UP RIGHT COLUMN
+
+
+var rightCol = document.querySelector('#right-col')
+
+
+var repoDataHandler = function(apiResponseData) {
+    // console.log('this works too')
+    // console.log(apiResponseData)
+    var reposDataArray = apiResponseData
+    console.log(reposDataArray)
+    var reposDataString = ''
+    for(var i = 0; i < reposDataArray.length; i++) {
+            var repoName = reposDataArray[i].name,
+                updateTime = reposDataArray[i].updated_at,
+                language = reposDataArray[i].language,
+                stars = reposDataArray[i].stargazers_count,
+                forks = reposDataArray[i].forks_count
+            reposDataString += '<hr>'
+            reposDataString += '<div class = "repos">'
+            reposDataString +=      '<p>' + updateTime + '</p>'
+            reposDataString +=      '<p>' + language + '</p>'
+            reposDataString +=      '<p>' + stars + '</p>'
+            reposDataString +=      '<p>' + forks + '</p>'
+            reposDataString += '</div>'
+    }
+    rightCol.innerHTML = reposDataString
+}
+reposPromise.then(repoDataHandler)
 
 
 
