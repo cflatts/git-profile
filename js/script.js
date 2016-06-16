@@ -10,6 +10,10 @@ console.log($)
 var genParamString = function(paramObject) {
     var outputString = '?'
     for (var key in paramObject) {
+        // if the key is access_token and the value is empty string, skip this iteration
+        if (key === "access_token" && !paramObject[key]) {
+            continue
+        }
         outputString += key + '=' + paramObject[key] + '&'
     }
     return outputString.substr(0,outputString.length - 1)
