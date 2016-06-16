@@ -53,9 +53,8 @@ var userDataHandler = function (apiResponseData) {
 
     // console.log(apiResponseData)
     var userDataObject = apiResponseData
-    // console.log(userDataArray)
     var userDataString = ''
-    // console.log(userDataObject)
+    console.log(userDataObject)
         var userPic = userDataObject.avatar_url,
         // console.log(userPic)
             name = userDataObject.name,
@@ -65,15 +64,19 @@ var userDataHandler = function (apiResponseData) {
             followers = userDataObject.followers,
             following =userDataObject.following
 
-        userDataString += '<img src=' + '"' + userPic + '">'
-        userDataString += '<div id = "name"><h4>' + name + '</h4></div>'
-        userDataString += '<div id = "username"><p>' + username + '</p></div>'
+         if(bio === null) {
+                bio = 'Add a bio'
+            }
+
+        userDataString += '<img id= "profilePic" src=' + '"' + userPic + '">'
+        userDataString += '<h3 id = "name">' + name + '</h3>'
+        userDataString += '<p id = "username">' + username + '</p>'
         userDataString += '<div id = "bio"><p>' + bio + '</p></div>'
-        userDataString += '<hr>'
+        userDataString += '<hr align = "left">'
         userDataString += '<div id = "joinDate">Joined on ' + joinDate + '<div>'
-        userDataString += '<hr>'
-        userDataString += '<div class ="bottom" id = "followers">' + followers + '</div>'
-        userDataString += '<div class = "bottom" id = "following">' + following + '</div>'
+        userDataString += '<hr align = "left">'
+        userDataString += '<div class ="bottom" id = "followers">' + followers + '<p>followers</p></div>'
+        userDataString += '<div class = "bottom" id = "following">' + following + '<p>following</p></div>'
 
 
     leftCol.innerHTML = userDataString
@@ -92,7 +95,7 @@ var repoDataHandler = function(apiResponseData) {
     // console.log('this works too')
     // console.log(apiResponseData)
     var reposDataArray = apiResponseData
-    console.log(reposDataArray)
+    // console.log(reposDataArray)
     var reposDataString = ''
     for(var i = 0; i < reposDataArray.length; i++) {
             var repoName = reposDataArray[i].name,
@@ -100,9 +103,17 @@ var repoDataHandler = function(apiResponseData) {
                 language = reposDataArray[i].language,
                 stars = reposDataArray[i].stargazers_count,
                 forks = reposDataArray[i].forks_count
+
+            if(language === 'JavaScript') {
+                language = 'JS'
+            }
+
             reposDataString += '<hr>'
             reposDataString += '<div class = "repos">'
-            reposDataString +=      '<p>' + updateTime + '</p>'
+            reposDataString +=      '<div class = "right">'
+            reposDataString +=          '<h1>' + repoName + '</h1>'
+            reposDataString +=          '<p>' + updateTime + '</p>'
+            reposDataString +=      '</div>'
             reposDataString +=      '<p>' + language + '</p>'
             reposDataString +=      '<p>' + stars + '</p>'
             reposDataString +=      '<p>' + forks + '</p>'

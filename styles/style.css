@@ -1,15 +1,79 @@
 * {
-    box-sizing: border-box;
+    box-sizing: border-box
+}
+
+body {
+    font-family: sans-serif;
 }
 
 #container {
+    display: flex
+}
+
+/* LEFT COLUMN */
+
+#left-col {
+    flex: 1
+    justify-content: flex-end;
+    margin-left: 20%;
+    margin-right: -10%;
+    text-align: left;
+}
+
+.bottom {
+    display: inline-block;
+    font-size: 36px;
+    color: #4785f4;
+}
+
+.bottom p {
+    font-size: 10px;
+    color: grey;
+    padding: 20%;
+}
+
+#profilePic {
+
+    width: 50%;
+    border-radius: 5%
+}
+
+#name {
+    width: 50%;
+    font-size: 24px
+
+}
+
+#username {
+    width: 50%;
+    color: #868686;
+    font-size: 18px
+
+}
+
+#left-col hr {
+    width: 50%;
+}
+
+/* RIGHT COLUMN */
+
+#right-col {
+    /*border: 3px solid purple;*/
+    flex: 3
+}
+
+h1 {
+    color: #4785f4;
+}
+
+.repos {
     display: flex;
 }
 
-#left-col {
-    flex: 1;
+.right {
+    flex: 5;
 }
 
-#right-col {
+p {
     flex: 1;
 }
