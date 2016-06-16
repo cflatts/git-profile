@@ -17,23 +17,24 @@ body {
     justify-content: flex-end;
     margin-left: 20%;
     margin-right: -10%;
-    text-align: left;
 }
 
 .bottom {
     display: inline-block;
     font-size: 36px;
-    color: #4785f4;
+    color: #36648b;
+    width: 17%;
+    text-align: center;
 }
 
 .bottom p {
     font-size: 10px;
     color: grey;
+    width: 20%;
     padding: 20%;
 }
 
 #profilePic {
-
     width: 50%;
     border-radius: 5%
 }
@@ -58,22 +59,30 @@ body {
 /* RIGHT COLUMN */
 
 #right-col {
-    /*border: 3px solid purple;*/
     flex: 3
 }
 
 h1 {
-    color: #4785f4;
+    color: #36648b;
 }
 
 .repos {
     display: flex;
+    align-items: center;
 }
 
-.right {
+.left {
     flex: 5;
 }
 
-p {
+.left p {
+    color: #999999;
+}
+
+.right{
+    font-size: 12px;
+    font-weight: bold;
+    color: #999999;
     flex: 1;
+    /*border: 3px solid purple;*/
 }

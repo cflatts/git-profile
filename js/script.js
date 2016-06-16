@@ -75,8 +75,9 @@ var userDataHandler = function (apiResponseData) {
         userDataString += '<hr align = "left">'
         userDataString += '<div id = "joinDate">Joined on ' + joinDate + '<div>'
         userDataString += '<hr align = "left">'
-        userDataString += '<div class ="bottom" id = "followers">' + followers + '<p>followers</p></div>'
-        userDataString += '<div class = "bottom" id = "following">' + following + '<p>following</p></div>'
+        userDataString += '<div class ="bottom" id = "followers">' + followers + '<p>Followers</p></div>'
+        userDataString += '<div class = "bottom" id ="star">0<p>Starred</p></div>'
+        userDataString += '<div class = "bottom" id = "following">' + following + '<p>Following</p></div>'
 
 
     leftCol.innerHTML = userDataString
@@ -104,19 +105,16 @@ var repoDataHandler = function(apiResponseData) {
                 stars = reposDataArray[i].stargazers_count,
                 forks = reposDataArray[i].forks_count
 
-            if(language === 'JavaScript') {
-                language = 'JS'
-            }
 
             reposDataString += '<hr>'
             reposDataString += '<div class = "repos">'
-            reposDataString +=      '<div class = "right">'
+            reposDataString +=      '<div class = "left">'
             reposDataString +=          '<h1>' + repoName + '</h1>'
             reposDataString +=          '<p>' + updateTime + '</p>'
             reposDataString +=      '</div>'
-            reposDataString +=      '<p>' + language + '</p>'
-            reposDataString +=      '<p>' + stars + '</p>'
-            reposDataString +=      '<p>' + forks + '</p>'
+            reposDataString +=      '<p class = "right">' + language + '</p>'
+            reposDataString +=      '<p class = "right">' + stars + '</p>'
+            reposDataString +=      '<p class = "right">' + forks + '</p>'
             reposDataString += '</div>'
     }
     rightCol.innerHTML = reposDataString
