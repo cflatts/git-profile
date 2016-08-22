@@ -64,7 +64,7 @@ var userDataHandler = function (apiResponseData) {
             name = userDataObject.name,
             username = userDataObject.login,
             bio = userDataObject.bio,
-            joinDate = userDataObject.created_at,
+            joinDate = new Date(userDataObject.created_at).toDateString(),
             followers = userDataObject.followers,
             following =userDataObject.following
 
@@ -104,7 +104,7 @@ var repoDataHandler = function(apiResponseData) {
     var reposDataString = ''
     for(var i = 0; i < reposDataArray.length; i++) {
             var repoName = reposDataArray[i].name,
-                updateTime = reposDataArray[i].updated_at,
+                updateTime = new Date(reposDataArray[i].updated_at).toDateString(),
                 language = reposDataArray[i].language,
                 stars = reposDataArray[i].stargazers_count,
                 forks = reposDataArray[i].forks_count
