@@ -6,12 +6,11 @@ console.log($)
 //JQUERY AND CREATING PROMISES
 
 
-
 var genParamString = function(paramObject) {
     var outputString = '?'
     for (var key in paramObject) {
         // if the key is access_token and the value is empty string, skip this iteration
-        if (key === "access_token" && !paramObject[key]) {
+        if (!paramObject[key]) {
             continue
         }
         outputString += key + '=' + paramObject[key] + '&'
@@ -28,7 +27,7 @@ catch (e) {
     var token = ''
 }
 
-// console.log('toke>>> ' + token)
+console.log('token>>> ' + token)
 
 var rootUrl ='https://api.github.com'
 var usernameUrl = '/users/cflatts'
